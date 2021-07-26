@@ -2,7 +2,49 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<form method="post" enctype="multipart/form-data" asp-action="ImportCSV">
+    <div class="form-group">
+        <div class="col-md-10">
+            <p>Upload CSV File</p>
+            <input type="file" name="file" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            <input type="submit" value="Upload" />
+        </div>
+    </div>
+</form>
+
+@{
+
+    List<object> commands = new List<object>();
+    commands.Add(new { type = "Edit", buttonOption = new { iconCss = "e-icons e-edit", cssClass = "e-flat" } });
+    commands.Add(new { type = "Delete", buttonOption = new { iconCss = "e-icons e-delete", cssClass = "e-flat" } });
+    commands.Add(new { type = "Save", buttonOption = new { iconCss = "e-icons e-update", cssClass = "e-flat" } });
+    commands.Add(new { type = "Cancel", buttonOption = new { iconCss = "e-icons e-cancel-icon", cssClass = "e-flat" } });
+
+}
+
+<div class="control-section">
+    <ejs-grid id="Grid" dataSource="ViewBag.dataSource" toolbar="@(new List<string>() {"Search" })" allowSorting="true" allowPaging="true">
+        <e-data-manager url="/Home/UrlDataSource" updateUrl="/Home/Update" removeUrl="/Home/Delete" adaptor="UrlAdaptor"></e-data-manager>
+        <e-grid-editSettings allowDeleting="true" allowEditing="true"></e-grid-editSettings>
+        <e-grid-pagesettings pageCount="5"></e-grid-pagesettings>
+        <e-grid-columns>
+            <e-grid-column field="Id" headerText="Id" type="string" isPrimaryKey="true" width="0" allowEditing="false"></e-grid-column>
+            <e-grid-column field="PayrollNumber" type="string" headerText="Payroll Number" validationRules="@(new { required=true})" textAlign="Right" width="100"></e-grid-column>
+            <e-grid-column field="Forenames" type="string" headerText="Forenames" validationRules="@(new { required=true})" width="140"></e-grid-column>
+            <e-grid-column field="Surname" type="string" headerText="Surname" validationRules="@(new { required=true})" width="140"></e-grid-column>
+            <e-grid-column field="DateOfBirth" headerText="Date of Birth" validationRules="@(new { required=true})" editType="datepickeredit" format="dMy" width="120"></e-grid-column>
+            <e-grid-column field="Telephone" type="int" headerText="Telephone" validationRules="@(new { required=true})" textAlign="Right" width="100"></e-grid-column>
+            <e-grid-column field="Mobile" type="int" headerText="Mobile" validationRules="@(new { required=true})" textAlign="Right" width="100"></e-grid-column>
+            <e-grid-column field="Address" type="string" headerText="Address" validationRules="@(new { required=true})" width="140"></e-grid-column>
+            <e-grid-column field="Address2" type="string" headerText="Address 2" validationRules="@(new { required=true})" width="140"></e-grid-column>
+            <e-grid-column field="Postcode" type="string" headerText="Postcode" validationRules="@(new { required=true})" width="140"></e-grid-column>
+            <e-grid-column field="Email" type="string" headerText="Email Home" validationRules="@(new { required=true})" width="140"></e-grid-column>
+            <e-grid-column field="StartDate" headerText="Start Date" validationRules="@(new { required=true})" editType="datepickeredit" format="dMy" width="120"></e-grid-column>
+            <e-grid-column headerText="Actions" width="150" commands="commands"></e-grid-column>
+        </e-grid-columns>
+    </ejs-grid>
 </div>
