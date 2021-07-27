@@ -7,7 +7,6 @@ using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json.Serialization;
 using Syncfusion.Licensing;
 using Synel.Domain.Interfaces.Repositories;
-using Synel.Domain.Interfaces.Services;
 using Synel.Infrastructure.Data;
 using Synel.Infrastructure.Repositories;
 using Synel.Infrastructure.Services;

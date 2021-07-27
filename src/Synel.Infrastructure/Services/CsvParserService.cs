@@ -1,7 +1,6 @@
 ﻿using CsvHelper;
 using Microsoft.AspNetCore.Http;
 using Synel.Domain.Entities.Employees;
-using Synel.Domain.Interfaces.Services;
 using Synel.Web.Mappers;
 using System;
 using System.Collections.Generic;

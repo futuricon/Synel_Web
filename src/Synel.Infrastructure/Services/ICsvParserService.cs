@@ -3,7 +3,7 @@ using Synel.Domain.Entities.Employees;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Synel.Domain.Interfaces.Services
+namespace Synel.Infrastructure.Services
 {
     public interface ICsvParserService
     {

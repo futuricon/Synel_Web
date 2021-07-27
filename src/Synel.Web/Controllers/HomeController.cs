@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Syncfusion.EJ2.Base;
 using Synel.Domain.Entities.Employees;
 using Synel.Domain.Interfaces.Repositories;
-using Synel.Domain.Interfaces.Services;
+using Synel.Infrastructure.Services;
 using Synel.Web.ViewModels;
 using System.Collections;
 using System.Collections.Generic;
@@ -49,7 +49,7 @@ namespace Synel.Web.Controllers
         public async Task<IActionResult> UrlDatasource([FromBody] DataManagerRequest dm)
         {
             IEnumerable DataSource = await _employeeRepository.GetEmployees();
-            DataOperations operation = new DataOperations();
+            var operation = new DataOperations();
             if (dm.Search != null && dm.Search.Count > 0)
             {
                 DataSource = operation.PerformSearching(DataSource, dm.Search); //Search
