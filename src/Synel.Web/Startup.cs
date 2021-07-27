@@ -31,7 +31,7 @@ namespace Synel.Web
                new DefaultContractResolver());
             
 
-        SyncfusionLicenseProvider.RegisterLicense(Configuration.GetSection("SyncfusionLicenseKey").Value);
+        SyncfusionLicenseProvider.RegisterLicense(Configuration["SyncfusionLicenseKey"]);
 
             services.AddControllersWithViews();
 
