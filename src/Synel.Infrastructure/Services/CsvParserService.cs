@@ -19,7 +19,7 @@ namespace Synel.Infrastructure.Services
             try
             {
                 using (var streamReader = new StreamReader(csvFile.OpenReadStream(), Encoding.Default))
-                using (var csvReader = new CsvReader(streamReader, new CultureInfo("en-GB"))) //Used CultureInfo("en-GB") for "dd/MM/yyyy" teplate
+                using (var csvReader = new CsvReader(streamReader, new CultureInfo("en-GB"))) //Used CultureInfo("en-GB") for "dd/MM/yyyy" template
                 {
                     csvReader.Context.RegisterClassMap<EmployeeMap>();
                     var employeeRecords = new List<Employee>();
